@@ -1,13 +1,25 @@
-import express from "express";
-import cors from "cors";
-import restaurants from "./api/restaurants.route.js";
+import app from "./src/app";
+import mongodb from "mongodb";
+import dotenv from "dotenv";
 
-const app = express();
+dotenv.config();
 
-app.use(cors());
-app.use(express.json());
+const MongoClient = mongodb.MongoClient;
 
-app.use("/api/v1/restaurants", restaurants);
-app.use("*", (req, res) => res.status(404).json({ error: "not found" }));
+const port = process.env.PORT || 8000;
 
-export default app;
+// Connect to mongodb database
+MongoClient.connect(process.env.WEEREV_DB_URI, {
+  poolSize: 50,
+  wtimeout: 2500,
+  useNewUrlParse: true,
+})
+  .catch((err) => {
+    console.error(err);
+    process.exit(1);
+  })
+  .then(async (client) => {
+    app.listen(port, () => {
+      console.log(`Listening to port ${port}`);
+    });
+  });
