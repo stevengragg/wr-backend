@@ -1,0 +1,28 @@
+{
+  "name": "wr-backend",
+  "version": "1.0.0",
+  "description": "NodeJs Express backend for Wee-Reviews web app",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "keywords": [
+    "node",
+    "nodejs",
+    "express",
+    "expressjs",
+    "mongodb",
+    "backend",
+    "api"
+  ],
+  "author": "Steven Gragg",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "mongodb": "^4.2.1"
+  }
+}
